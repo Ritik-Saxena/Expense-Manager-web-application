@@ -1,0 +1,81 @@
+{% load static %}
+
+<style>
+    img {
+        height: 40px;
+        width: auto;
+        display: inline-block;
+    }
+
+    #logout {
+        color: #ed5e68
+    }
+
+    #logout:hover, #logout:active {
+        color: #F86A6F;
+    }
+</style>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="background-color: #1c2a5d !important; margin: 0;">
+    <!-- <a class="navbar-brand" href="{% url 'expense:index' %}">Expense Desk</a> -->
+    <div class="logo">
+        <a class="navbar-brand" href="{% url 'expense:index' %}" style="padding:5px 0; margin:0;">
+            <img src="{% static 'expense/images/logo/expense_desk_logo.png' %}" alt="" style="display: inline-block;">&nbsp;<span>Expense Desk</span>
+        </a>
+    </div>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-item nav-link" id="Home" href="{% url 'expense:index' %}">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-item nav-link" id="My-Profile" href="{% url 'expense:user_profile' %}">Profile</a>
+            </li>
+
+            <li class="nav-item dropdown">
+                <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                More
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">     <!-- style="background-color: #121215;" -->
+                    <p class="text-muted" style="margin-left: 5px; display: inline;">Sort by Price:</p>
+                    <a class="dropdown-item" href="{% url 'expense:price_max_to_min' %}">Price Maximum</a>
+                    <a class="dropdown-item" href="{% url 'expense:price_min_to_max' %}">Price Minimum</a>
+                    <div class="dropdown-divider"></div>
+                    <p class="text-muted" style="margin-left: 5px; display: inline;">Sort by Date:</p>
+                    <a class="dropdown-item" href="{% url 'expense:date_beginning' %}">Old Expense</a>
+                    <a class="dropdown-item" href="{% url 'expense:date_end' %}">Recent Expense</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="{% url 'expense:clear_all_expense' %}">Clear all expenses</a>
+                </ul>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-item nav-link" href="{% url 'expense:about' %}">About</a>
+            </li>
+        </div>
+        
+        <div class="navbar-nav navbar-right">
+            {% if request.user.is_authenticated %}
+                <li class="nav-item">
+                    <a class="nav-item nav-link active">Hello, {{request.user.username}}</a>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-item nav-link logout" id="logout" href="{% url 'user_logout' %}"><b>Logout</b></a>
+                </li>
+            {% else %}          <!-- Remove this code -->
+                <li class="nav-item">
+                    <a class="nav-item nav-link" href="{% url 'user_login' %}" style="color: #ed5e68;">Login</a>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-item nav-link" href="{% url 'user_register' %}" style="color: #ed5e68;">SignUp</a>
+                </li>
+            {% endif %}
+        </div>
+    </div>
+</nav>

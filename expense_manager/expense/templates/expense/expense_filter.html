@@ -1,0 +1,132 @@
+{% load widget_tweaks %}
+
+<style>
+    #more {display: none;}
+    .filter-box {
+        padding: 75px 0;
+        background-color: #f5f5f5;  /* fafafa */
+    }
+    
+    .filter-inner-box {
+        margin: 0 10%;
+    }
+
+    .text-center {
+        margin: 0 auto;
+    }
+</style>
+        
+<div class="filter-box">
+    <div class="filter-inner-box">
+
+        <form method="GET" action="">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xm-12">
+                                
+                    <div class="row" style="justify-content: center;">                
+                        <div class="col-lg-3 col-md-3 col-sm-6 col-xm-6 p-0" style="margin: 0 0 5px 5px;">
+                            {% render_field expense_filter.form.title class="form-control" placeholder="Expense" %}
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-6 col-xm-6 p-0" style="margin: 0 0 5px 5px;">
+                            {% render_field expense_filter.form.category class="form-control" placeholder="Category" %}
+                        </div>
+                        
+                        <div id="submit-btn-before" class="col-lg-3 col-md-3 col-sm-6 col-xm-6 p-0" style="margin: 0 0 5px 5px; justify-content: center;">
+                            <input type="submit" class="btn btn-primary" style="width: 110px;" value="Search">
+                            <a href="{% url 'expense:index' %}">
+                                <button type="button" class="btn btn-primary" style="width: 110px;">Clear Search</button>
+                            </a>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <span id="dots"></span>
+
+            <div id="more">
+
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="row" style="justify-content: center;">
+                            <div class="col-lg-3 col-md-3 col-sm-6 col-xm-6 p-0" style="margin: 0 0 5px 5px;">
+                                {% render_field expense_filter.form.price_gte class="form-control" placeholder="Min Price" %}
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-sm-6 col-xm-6 p-0" style="margin: 0 0 5px 5px;">
+                                {% render_field expense_filter.form.price_lte class="form-control" placeholder="Max Price" %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="row" style="justify-content: center;">
+                            <div class="col-lg-3 col-md-3 col-sm-6 col-xm-6 p-0" style="margin: 0 0 5px 5px;">
+                                {% render_field expense_filter.form.date_gte class="form-control" placeholder="From date (MM/DD/YYYY)" %}
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-sm-6 col-xm-6 p-0" style="margin: 0 0 5px 5px;">
+                                {% render_field expense_filter.form.date_lte class="form-control" placeholder="Before date (MM/DD/YYYY)" %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="row" style="justify-content: center;">
+                            <div class="col-lg-3 col-md-3 col-sm-6 col-xm-6 p-0" style="margin: 0 0 5px 5px;">
+                                {% render_field expense_filter.form.desc class="form-control" placeholder="Description" %}
+                            </div>
+                            <div id="submit-btn-after" class="col-lg-3 col-md-3 col-sm-6 col-xm-6 p-0" style="margin: 0 0 5px 5px;">
+                                <button type="submit" class="btn btn-primary" style="width: 110px;">Search</button>
+                                <a href="{% url 'expense:index' %}">
+                                    <button type="button" class="btn btn-primary">Clear Search</button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        
+            
+        </form>
+        
+        <div class="text-center" onclick="myFunction()" id="myBtn" style="color: #121212; font-weight: bold; cursor: pointer; margin-top: 10px;">
+            <!-- <span class="glyphicon glyphicon-triangle-bottom"></span>&nbsp; -->
+            Advanced Search &gt;
+        </div>
+
+    </div>
+</div>
+    
+<script>
+    function myFunction() {
+        var dots = document.getElementById("dots");
+        var moreText = document.getElementById("more");
+        var btnText = document.getElementById("myBtn");
+        var btnSubmitBefore = document.getElementById("submit-btn-before");
+        var btnSubmitAfter = document.getElementById("submit-btn-after");
+        var btnClearBefore = document.getElementById("clear-btn-before");
+        var btnClearAfter = document.getElementById("clear-btn-after");
+    
+    
+        if (dots.style.display === "none") {
+        dots.style.display = "inline";
+        btnText.innerHTML = "Advanced Search &gt";
+        moreText.style.display = "none";
+        btnSubmitBefore.style.display = "inline";
+        btnClearBefore.style.display = "inline";
+    
+        } else {
+        dots.style.display = "none";
+        btnText.innerHTML = "Normal Search &lt";
+        moreText.style.display = "inline";
+        btnSubmitBefore.style.display = "none";
+        btnClearBefore.style.display = "none";
+
+        }
+    }
+</script>

@@ -1,0 +1,79 @@
+{% extends 'expense/base.html' %}
+
+{% block page_title %}Expense Desk - About{% endblock page_title %}
+
+{% block content %}
+
+<style>
+    .content-div {
+        margin: 40px 0;
+    }
+    
+    .content {
+        justify-content:center;
+        font-size: 16px;
+    }
+
+    h2 {
+        margin-bottom: 15px;
+    }
+
+    .profile-link:hover, .profile-link:active {
+        text-decoration: none;
+        color: #ed5e68;
+    }
+</style>
+
+<div class="about" style="margin: 0 10%;">
+        <h1 style="text-align: center;">About Us</h1><br>
+        
+        <div class="content-div">
+            <h2>What is Expense Desk?</h2>
+            <p class="content">
+                Hi, my name is <a class="profile-link" target="_blank" href="https://www.linkedin.com/in/ritik-saxena">Ritik Saxena</a>. 'Expense Desk' is a part of my portfolio projects.<br><br>Expense Desk is a web application that helps in managing day-to-day expenses based on common categories. It also helps controlling expenses by analyzing and evaluating the expenditures.
+                <br>
+            </p>
+        </div>
+
+        <hr>
+        
+        <div class="content-div">
+            <h2>Who is this for?</h2>
+            <p class="content">
+                'Expense Desk' is for everyone who wants to manage and analyze their expenses like Healthcare, Groceries, Travel, Entertainment, etc.
+                <br>
+            </p>
+        </div>        
+        
+        <hr>
+        
+        <div class="content-div">
+            <h2>Features of Expense Desk:</h2>
+            <p class="content">
+                <ul>
+                    <li>Add/Edit/Delete Expenses</li>
+                    <li>Sort expenses according to 'Date' or 'Price'</li>
+                    <li>Search expense according to different parameters</li>
+                    <li>Chart representations for Expense Analysis</li>
+                    <li>Section for User Profile</li>
+                    <li>Login System with Reset Password</li>
+                </ul>
+            </p>
+        </div>
+        
+        <hr>
+        
+        <div class="content-div">
+            <h2>Technologies used:</h2>
+            <p class="content">
+                <ul>
+                    <li><b>Serving requests and Database connectivity:</b> Django (Python web-framework)</li>
+                    <li><b>Database:</b> Postgresql (ORM)</li>
+                    <li><b>Chart:</b> Fusionchart API</li>
+                    <li><b>For front-end:</b> HTML, CSS, and Bootstrap</li>
+                </ul>
+            </p>
+        </div>
+</div>
+
+{% endblock %}

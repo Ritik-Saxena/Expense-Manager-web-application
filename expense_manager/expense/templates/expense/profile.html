@@ -1,0 +1,122 @@
+{% extends 'expense/base.html' %}
+{% load widget_tweaks %}
+{% load static %}
+
+{% block page_title %}Expense Desk - My Profile{% endblock page_title %}
+
+{% block content %}
+
+
+<style>
+    .avatar-img {
+        margin: 0 auto;
+        width: 200px;
+        height: 200px;
+        max-width: 200px;
+        max-height: 200px;
+        border-radius: 50%;
+    }
+
+    .form-group .tooltiptext {
+        visibility: hidden;
+        background-color: black;
+        color: #fff;
+        text-align: center;
+        border-radius: 6px;
+        padding: 5px 5px;
+        
+        /* Position the tooltip */
+        position: absolute;
+        z-index: 1;
+        top:0px;
+        left: 295%;
+    }
+        
+    .form-group:hover .tooltiptext {
+        visibility: visible;
+    }
+
+
+    @media only screen and (min-width: 375px) and (max-width: 767px) { 
+        .form-group .tooltiptext {
+            bottom: 0%;
+            left: 0%;
+            top: -55px;
+            overflow-y: scroll;
+            margin-left: 15%;
+            height: 55px;
+        }
+    }
+
+</style>
+
+<div style="margin: 8% 2%;">
+
+    <div class="row">
+        <div class="col-lg-3 col-md-3 col-sm-12">
+            <div class="card card-body">
+                <a class="btn btn-danger" href="{% url 'expense:index' %}"> &#8592; Back to Home</a>
+                <hr>
+
+                <h3 style="text-align: center; margin-top: 0; margin-bottom: 20px; font-weight: bold;">Profile Image</h3>
+                {% if request.user.userprofile.avatar %}
+                    <img class="avatar-img" src="{{request.user.userprofile.avatar.url}}" class="card-img">
+                {% else %}
+                    <img class="avatar-img" src="{% static 'expense/default_avatar.png' %}" class="card-img">
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="col-lg-9 col-md-9 col-sm-12">
+            <div class="card card-body">
+
+                <h4 class="card-title">My Profile</h4> <hr>
+                <form method="POST" action="" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="row form-group" style="padding: 5px;">
+                        <div class="col-md-3 col-lg-2 col-sm-4 col-xs-12">
+                            <h4 class="font-weight-light">Username:</h4>
+                            <span class="tooltiptext" style="width: 200px;">
+                                This will not change your Login Username<br>
+                            </span>
+                        </div>
+                        <div class="col-md-4 col-lg-4 col-sm-12">
+                            {% render_field form.display_name class="form-control" %}
+                        </div>
+                    </div>
+
+                    <div class="row" style="padding: 5px;">
+                        <div class="col-md-3 col-lg-2 col-sm-4 col-xs-12">
+                            <h4 class="font-weight-light">Email ID:</h4>
+                        </div>
+                        <div class="col-md-4 col-lg-4 col-sm-12">
+                            {% render_field form.email class="form-control" readonly="true" %}
+                        </div>
+                    </div>
+
+                    <div class="row" style="padding: 5px;">
+                        <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+                            <h4 class="font-weight-light">Profile Image:</h4>
+                        </div>
+                        <div class="col-md-12 col-lg-12 col-sm-12">
+                            {{form.avatar}}
+                        </div>
+                    </div> <br>
+
+                    <input class="btn btn-primary" style="width: 80px;" type="submit" value="Save">
+                    <a href="{% url 'expense:index' %}"><button class="btn btn-primary" style="width: 80px;" type="button">Cancel</button></a>
+                    
+                </form>
+                <br>
+                <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
+            </div>
+        </div>
+    </div>
+    {% for message in messages %}
+        <div style="text-align: center;">
+            <h4 style="margin: 20px auto; color: #c80815;">{{message}}</h4>
+        </div>
+    {% endfor %}
+
+</div>
+{% endblock %}

@@ -1,0 +1,64 @@
+<section class="search-sec" style="margin-left: 15%;">
+    <div class="container">
+        <form action="#" method="post" novalidate="novalidate">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-3 col-sm-12 p-0">
+                            <input type="text" class="form-control search-slt" placeholder="Enter Pickup City">
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-12 p-0">
+                            <input type="text" class="form-control search-slt" placeholder="Enter Drop City">
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-12 p-0">
+                            <select class="form-control search-slt" id="exampleFormControlSelect1">
+                                <option>Select Vehicle</option>
+                                <option>Example one</option>
+                                <option>Example one</option>
+                                <option>Example one</option>
+                                <option>Example one</option>
+                                <option>Example one</option>
+                                <option>Example one</option>
+                            </select>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-12 p-0">
+                            <button type="button" class="btn btn-danger wrn-btn">Search</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <form method="GET" action="">
+        <!-- {{expense_filter.form}} -->
+        <h6> 
+            {{expense_filter.form.title.label}} {{expense_filter.form.title}}
+            {{expense_filter.form.desc.label}} {{expense_filter.form.desc}}
+        </h6>
+        <h6> 
+            {{expense_filter.form.price_gte.label}} {{expense_filter.form.price_gte}}
+            {{expense_filter.form.price_lte.label}} {{expense_filter.form.price_lte}}
+        </h6>
+        <h6> 
+            {{expense_filter.form.date_gte.label}} {{expense_filter.form.date_gte}}
+            {{expense_filter.form.date_lte.label}} {{expense_filter.form.date_lte}}
+        </h6>
+        <h6> 
+            {{expense_filter.form.category.label}} {{expense_filter.form.category}}&nbsp;&nbsp;
+            <input type="submit" value="Search"> 
+            <a href="{% url 'expense:index' %}"><button type="button">Clear Search</button></a>
+        </h6>
+    </form>
+    
+</body>
+</html>

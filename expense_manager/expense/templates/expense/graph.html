@@ -1,0 +1,76 @@
+{% load static %}
+
+<script
+  type="text/javascript"
+  src="{% static 'expense/js/fusioncharts.js' %}"
+></script>
+<script
+  type="text/javascript"
+  src="{% static 'expense/js/themes/fusioncharts.theme.fusion.js' %}"
+></script>
+
+
+<style type="text/css">
+  svg > g[class^="raphael-group-"] > text{
+    display: none;
+  }
+
+  @media(max-width: 400px) {
+    .text-center {
+        width: 90%;
+    }
+  }
+
+  .pie-chart-box {
+    padding: 75px 0;
+    background-color: #f5f5f5;
+  }
+
+  .analyze-btn {
+    background-color: #F86A6F;
+    border-color: #F86A6F;
+  }
+
+  .analyze-btn:focus, .analyze-btn:link, .analyze-btn:visited {
+    background-color: #F86A6F;
+    border-color: #F86A6F;
+  }
+
+  .analyze-btn:hover, .analyze-btn:active {
+    background-color: #ed5e68;
+    border-color: #ed5e68;
+  }
+
+  .information {
+		text-align: center;
+		padding-bottom: 20px;
+		margin: 0 10%;
+  }
+  
+  .error-information {
+		margin: 40px 15%;
+		text-align: center;
+		padding: 50px;
+		border: 2px solid #333333;
+		border-radius: 20px;
+	}
+</style>
+
+<div class="pie-chart-box">
+	<h3 class="information">Category Wise Expenses Of All Time</h3>
+  {% if pie_chart is None %}
+		<h3 class="error-information">Add expense to view this chart.</h3>
+	{% else %}
+		<!-- FusionCharts will render here-->
+		<div id="chart-1" style="text-align: center;">{{ pie_chart|safe }}</div>
+		<!-- dumping JavaScript code here -->
+		<div id="chart-1" style="margin:auto; width: 100%;">{{ pie_chart|safe }}</div>
+	{% endif %}
+
+
+
+  <div class="text-center" style="margin: 20px auto 0 auto;">
+    <a href="{% url 'expense:graph_analysis' %}"><button class="analyze-btn btn btn-info">Analyze more</button></a>
+  </div>
+</div>
+

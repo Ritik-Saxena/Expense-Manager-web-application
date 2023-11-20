@@ -1,0 +1,36 @@
+{% extends 'accounts/base.html' %}
+{% load widget_tweaks %}
+
+{% block accounts_base %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Delete Expenses</title>
+</head>
+<body>
+
+    <div class="login-container d-flex align-item-center justify-content-center">
+        <div class="login-form text-center">
+            <form class="login-form text-center" method="POST" action="">
+                {% csrf_token %}
+
+                <h1 class="mb-5 font-weight-light text-uppercase">Warning!</h1>
+                <p style="text-align: justify; padding-bottom: 20px;">
+                    This will permanently delete all of your expenses. Do you want to continue?
+                </p>
+
+                <button class="btn btn-primary btn-block rounded-pill form-control-lg">Confirm Delete</button>
+                <p class="mt-3 font-weight-normal">Go back to home page? <a href="{% url 'expense:index' %}">Home</a></p>
+                
+            </form>
+        </div>
+    </div>
+  
+</body>
+</html>
+{% endblock %}
+
+

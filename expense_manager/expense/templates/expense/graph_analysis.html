@@ -1,0 +1,97 @@
+{% extends 'expense/base.html' %}
+
+{% load static %}
+
+{% block page_title %}Expense Desk - Graph Analysis{% endblock page_title %}
+
+{% block content %}
+
+
+<script
+	type="text/javascript"
+	src="{% static 'expense/js/fusioncharts.js' %}"
+></script>
+<script
+	type="text/javascript"
+	src="{% static 'expense/js/themes/fusioncharts.theme.fusion.js' %}"
+></script>
+<script
+	type="text/javascript"
+	src="{% static 'expense/js/themes/fusioncharts.theme.candy.js' %}"
+></script>
+
+
+<style>
+
+	svg > g[class^="raphael-group-"] > text{
+		display: none;
+	}
+	  
+	.back-btn {
+		background-color: #F86A6F;
+		border-color: #F86A6F;
+	}
+
+	.back-btn:focus, .back-btn:link, .back-btn:visited {
+	background-color: #F86A6F;
+	border-color: #F86A6F;
+	}
+
+	.back-btn:hover, .back-btn:active {
+	background-color: #ed5e68;
+	border-color: #ed5e68;
+	}
+
+	.chart-class1 {
+		background-color: #f5f5f5;
+        padding: 50px 0 75px 0;
+	}
+
+	.chart-class2 {
+		background-color: #fbfcfd;
+        padding: 50px 0 75px 0;
+	}
+	
+	.information {
+		text-align: center;
+		padding-bottom: 20px;
+		margin: 0 10%;
+	}
+
+	.error-information {
+		margin: 40px 15%;
+		text-align: center;
+		padding: 50px;
+		border: 2px solid #333333;
+		border-radius: 20px;
+	}
+</style>
+
+
+<div class="chart-class chart-class1">
+	<h3 class="information">Last Seven Days Expenses Based On Categories</h3>
+	{% if line_chart is None %}
+		<h3 class="error-information">You need to have atleast 7 expenses to view this chart.</h3>
+	{% else %}
+		<!-- FusionCharts will render here-->
+		<div id="chart-1" style="text-align: center;">{{ line_chart|safe }}</div>
+		<!-- dumping JavaScript code here -->
+		<div id="chart-1" style="margin:auto; width: 100%;">{{ line_chart|safe }}</div>
+	{% endif %}
+</div>
+
+<div class="chart-class chart-class2">
+	<h3 class="information">Monthly Expenses Of Current Year</h3>
+	<!-- FusionCharts will render here-->
+	<div id="chart-2" style="text-align: center;">{{ bar_chart|safe }}</div>
+	<!-- dumping JavaScript code here -->
+	<div id="chart-2" style="margin:auto; width: 100%;">{{ bar_chart|safe }}</div>
+	
+	<div class="text-center" style="margin: 20px auto 0 auto;">
+		<a href="{% url 'expense:index' %}"><button class="back-btn btn btn-info">Go Back</button></a>
+	</div>
+</div>
+
+
+
+{% endblock content %}

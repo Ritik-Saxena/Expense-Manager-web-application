@@ -1,0 +1,72 @@
+{% extends 'expense/base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+
+{% block content %}
+
+<style>
+    .row{
+        justify-content: center ;
+        margin: 0;
+        padding: 40px 0;
+    }
+</style>
+
+
+<div class="row">
+        <div class="col-lg-8 col-md-8 col-sm-12">
+        <div class="card card-body" style="border:1px solid #b3b3b3; border-radius: 2%;">
+
+            <h4 class="card-title" style="text-align: center; color: #000000; margin-bottom:0">Expense Details</h4>
+            <hr>
+            
+            <form method="POST" action="" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="row" style="padding: 5px;">
+                    <div class="col-md-3 col-lg-3 col-sm-4 col-xs-12">
+                        <h4 class="font-weight-light">Expense Title:</h4>
+                    </div>
+                    <div class="col-md-5 col-lg-5 col-sm-8 col-xs-12">
+                        {% render_field form.title class="form-control" %}
+                    </div>
+                </div>
+
+                <div class="row" style="padding: 5px;">
+                    <div class="col-md-3 col-lg-3 col-sm-4 col-xs-12">
+                        <h4 class="font-weight-light">Price:</h4>
+                    </div>
+                    <div class="col-md-5 col-lg-5 col-sm-8 col-xs-12">
+                        {% render_field form.price class="form-control" %}
+                    </div>
+                </div>
+
+                <div class="row" style="padding: 5px;">
+                    <div class="col-md-8 col-lg-8 col-sm-8 col-xs-12">
+                        <h4 class="font-weight-light">Description:</h4>
+                    </div>
+                    <div class="col-md-8 col-lg-8 col-sm-8 col-xs-12">
+                        {% render_field form.desc class="form-control" %}
+                    </div>
+                </div> 
+
+                <div class="row" style="padding: 5px;">
+                    <div class="col-md-3 col-lg-3 col-sm-4 col-xs-12">
+                        <h4 class="font-weight-light">Category:</h4>
+                    </div>
+                    <div class="col-md-5 col-lg-5 col-sm-8 col-xs-12">
+                        {% render_field form.category class="form-control" %}
+                    </div>
+                </div> <br>
+
+                <div class="text-center">
+                    <input class="btn btn-primary" style="width: 80px;" type="submit" value="Save">
+                    <a href="{% url 'expense:index' %}"><button class="btn btn-primary" style="width: 80px;" type="button">Cancel</button></a>
+                </div>
+            </form>
+            <br>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

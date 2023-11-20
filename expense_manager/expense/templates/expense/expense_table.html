@@ -1,0 +1,163 @@
+<style>
+    @media(max-width: 575px) {
+        .header-fixed {
+            width: 90%;
+        }
+
+        
+        #new-expense-link:link, #new-expense-link:visited {
+            border: none;
+            padding: 0;
+            margin: 0;
+            background-color: #313D6C;
+            transition: color 0.3s;
+        }
+
+        /*#new-expense-link:hover, #new-expense-link:active {
+            color: #eb4f5a;
+            transition: color 0.3s;
+        }*/
+        
+    }
+
+    .table-box {
+        padding: 75px 0;
+        background-color: #fbfcfd;
+        box-shadow: inset 0px 0px 5px 2px rgba(0,0,0,0.20);
+    }
+
+    .table {
+        box-shadow: 0px 2px 5px rgba(0,0,0,0.5);
+        margin: 0px auto;
+    }
+
+    .table-header {
+        background-color: #313D6C;
+        color: #ffffff;
+    } 
+
+    #new-expense-link {
+        border: 1px solid #ffffff;
+        position: relative;
+    }
+    
+    .glyphicon-plus-sign {
+        top: 3px;
+    }
+
+
+    .new-expense-btn a:link, a:visited {
+        padding: 6px 8px;
+        margin: 0;
+        border-radius: 50px;
+        transition: background-color 0.3s, border-color 0.3s;
+    }
+
+
+    .new-expense-btn a:hover, a:active {
+        color: #ffffff;
+        padding: 6px 8px;
+        margin: 0;
+        border-radius: 50px;
+        transition: background-color 0.3s, border-color 0.3s;
+    }
+
+    #new-expense-link:hover, #new-expense-link:active {
+        background-color: #eb4f5a;
+        border: 1px solid #eb4f5a;
+    }
+
+/*
+    #new-expense-link:link, #new-expense-link:visited {
+        padding: 6px 8px;
+        margin: 0;
+        border-radius: 50px;
+        transition: background-color 0.3s, border-color 0.3s;
+    }
+
+    #new-expense-link:hover, #new-expense-link:active {
+        border: 1px solid #eb4f5a;
+        background-color: #eb4f5a;
+        color: #ffffff;
+        padding: 6px 8px;
+        margin: 0;
+        border-radius: 50px;
+        transition: background-color 0.3s, border-color 0.3s;
+    }
+*/
+
+
+    .table-header tr {
+        padding-top: 10px;
+    }
+    
+    .table-body {
+        background-color: #fdfdfd;
+    }
+
+    .table-footer {
+        background-color: #444F79;
+        color: #ffffff;
+    }
+
+
+
+</style>
+
+
+<div class="table-box">
+    <table class="table ble-striped header-fixed table-hover table-light">
+        <thead class="table-header scrollme">
+            <tr>
+                <th scope="col">Expense</th>
+                <th scope="col">Price</th>
+                <th scope="col">Date</th>
+                <th scope="col"></th>
+                <th class="new-expense-btn">
+                    <a id="new-expense-link" href="{% url 'expense:create_expense' %}" style="color: #ffffff; text-decoration: none;">
+                        <span class="glyphicon glyphicon-plus-sign" style="color: #ffffff; font-size: 15px;"></span>
+                        &nbsp;<b>Add Expense</b>
+                    </a>
+                </th>
+                
+            </tr>
+        </thead>
+        
+        <tbody class="table-body tbody-light scrollme">       
+            {% for expense in expense_list %}
+            <tr>
+                    <td style="padding-top: 15px;">{{expense.title}}</td>
+                    <td style="padding-top: 15px;">{{expense.price}}</td>
+                    <td style="padding-top: 15px;">{{expense.date_added}}</td>
+                    <td>
+                        <a href="{% url 'expense:update_expense' expense.id %}">
+                            <button class="btn-update btn btn-info hidden-xs" type="button">Update</button>
+                        </a>
+                        <a href="{% url 'expense:update_expense' expense.id %}" style="color: #000000; text-decoration: none; font-size: 20px; margin: auto;">
+                            <span class="glyphicon glyphicon-pencil visible-xs-block" style="color: #5bc0de; margin-top: 35px;"></span>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="{% url 'expense:delete_expense' expense.id %}">
+                            <button class="btn-delete btn btn-primary btn-danger hidden-xs" type="button">Delete</button>
+                        </a>
+                        <a href="{% url 'expense:delete_expense' expense.id %}" style="color: #000000; text-decoration: none; justify-content: center; font-size: 20px; padding: 20px auto; margin: auto;">
+                            <span class="glyphicon glyphicon-trash visible-xs-block" style="color: #d9534f; margin-top: 35px;"></span>
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+
+        <tfoot class="table-footer">
+            <tr>
+                <th>Total</th>
+                <th style="white-space: nowrap;">Rs {{total}}</th>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+        </tfoot>
+    </table>
+</div>
+

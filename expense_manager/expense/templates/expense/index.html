@@ -1,0 +1,32 @@
+{% extends 'expense/base.html' %}
+
+{% block page_title %}Expense Desk - Home{% endblock page_title %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+
+<body>
+
+    {% include 'expense/expense_filter.html' %}
+
+    
+    <!-- <div style="background-color: rgb(26, 26, 26); padding: 100px 0;"> -->
+        {% include 'expense/expense_table.html' %}    
+    <!-- </div> -->
+
+    {% include 'expense/graph.html' %}
+
+</body>
+</html>
+
+{% endblock %}
+
+
+
+
