@@ -17,6 +17,8 @@ I developed a comprehensive Expense Manager web application (named **Expense Des
 
 - **Data Security:** User credentials are prioritized, employing AES256 encryption for enhanced security, ensuring the protection of sensitive information.
 
+- **Account Management:** Users can create accounts, log in securely, and leverage a password reset feature that sends reset instructions to registered emails.
+
 This Expense Manager is designed to empower users with a simple yet effective tool to monitor their expenditures, offering valuable insights for better financial planning and management.
 
 ## Video
