@@ -8,7 +8,7 @@
 
 ### Expense Manager Web Application
 
-I developed a comprehensive Expense Manager web application (named **Expense Desk** ) as my Graduation Final Year project back in year 2020. Powered by Python and Django, the application efficiently handles all business logic, while PostgreSQL ensures secure and organized data storage.
+I developed a comprehensive Expense Manager web application (named **Expense Desk** ) as my Graduation Final Year project back in year 2020. Powered by Python and Django for the backend, the application efficiently handles all business logic, while the frontend is done using HTML, CSS, and Bootstrap and PostgreSQL ensures secure and organized data storage.
 
 **Key Features:**
 - **User-Friendly Expense Tracking:** Users can effortlessly log day-to-day expenses across various categories, including Shopping, Medical, Bills and Fees, Travel, Beauty, Food, Entertainment, and more.
