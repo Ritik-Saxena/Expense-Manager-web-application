@@ -8,6 +8,8 @@
 
 ### Expense Manager Web Application
 
+https://www.linkedin.com/comm/checkpoint/lg/otp-submit/flagship?session_redirect=%2Ffeed%2F%3FparentPageKey%3Dd_request-otp-generation&fromSignIn=true&loginToken=AQEoa0GUFQ3WZwAAAYxjLWJM3rxc26AtT003pBVd6s9YrC5GgIfultHV-TKKi9FcapqW3m9E2bO63VFWVs1-9FTsiC2lZ2ShBKZcW5qgzxHp0L2grBs&sig=04USxeqDbQZr01&submissionId=AgGdcqtMnWof9AAAAYxjLWGGlybWBbwEvgSqjZZjlct4YTw6XduZVpfPISgXVGYV07VmxsTfRXb_cPvI40xqYF1G_OyxpLdRePYbwg&lipi=urn%3Ali%3Apage%3Aemail_email_security_one_time_sign_in_link_checkpoint%3B6nDEPDe5RNWGTOpgSU3vog%3D%3D&midToken=AQFREPmRF32Wmw&midSig=2DlvAbrOHQZr01&trk=eml-email_security_one_time_sign_in_link_checkpoint-null-0-null&trkEmail=eml-email_security_one_time_sign_in_link_checkpoint-null-0-null-null-cuebht~lq3r9a3y~81-null-null&eid=cuebht-lq3r9a3y-81
+
 I developed a comprehensive Expense Manager web application (named **Expense Desk** ) as my Graduation Final Year project back in year 2020. Powered by Python and Django for the backend, the application efficiently handles all business logic, while the frontend is done using HTML, CSS, and Bootstrap and PostgreSQL ensures secure and organized data storage.
 
 **Key Features:**
